@@ -31,7 +31,7 @@ abstract class AbstractModel {
     }
     
     public static function findByColumn($column, $value) {
-        $db = Database::get();
+        $db = Database::init();
         $db->setClassName(get_called_class());
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . '=:value';
         $res = $db->query($sql, [':value' => $value])[0];
@@ -44,7 +44,7 @@ abstract class AbstractModel {
     
     public static function findAll(){
         $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY date DESC';
-        $db = Database::get();
+        $db = Database::init();
         $class = get_called_class();
         $db->setClassName($class);
         return $db->query($sql);
@@ -52,7 +52,7 @@ abstract class AbstractModel {
     
     public static function findById($id){
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
-        $db = Database::get();
+        $db = Database::init();
         $class = get_called_class();
         $db->setClassName($class);
         $res = $db->query($sql, [':id' => $id]);
@@ -77,7 +77,7 @@ abstract class AbstractModel {
                'VALUES '.
                '('.  implode(',', array_keys($data)). ')';
         
-        $db = Database::get();
+        $db = Database::init();
         $db->execute($sql, $data);
         $this->id = $db->lastInsertId();
     }
@@ -98,7 +98,7 @@ abstract class AbstractModel {
                ' SET ' . implode(', ', $cols) .   
                ' WHERE id=:id';
         
-        $db = Database::get();
+        $db = Database::init();
         $db->execute($sql, $data);
     }
     
@@ -113,7 +113,7 @@ abstract class AbstractModel {
     public function delete(){
         echo $sql = 'DELETE FROM '. static::$table .' WHERE id=:id';
         
-        $db = Database::get();
+        $db = Database::init();
         $db->query($sql);
     }
 }

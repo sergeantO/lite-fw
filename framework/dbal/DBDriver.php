@@ -21,7 +21,7 @@ class DBDriver
         $this->dbh = new PDO($dsn, USER, PASS);
     }
 	
-    public static function get(){
+    public static function init(){
         if(is_null(self::$_instance)){
             self::$_instance = new self();
         }
@@ -44,6 +44,14 @@ class DBDriver
     }
     
     public function lastInsertId() {
-        return$this->dbh->lastInsertId();
+        return $this->dbh->lastInsertId();
+    }
+    
+    /**
+     * @return array
+     */
+    public function getErrorInfo()
+    {
+        return $this->pdo->errorInfo();
     }
 }
