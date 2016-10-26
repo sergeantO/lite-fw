@@ -11,12 +11,21 @@ use \PDO;
  */
 class DBDriver 
 {
+ 
+    private static $_instance = null;
     private $dbh;
     private $className = "stdClass";
     
-    public function __construct() {
+    private function __construct(){
         $dsn = 'mysql:dbname=' . DBNAME . ';host=' . HOST;
         $this->dbh = new PDO($dsn, USER, PASS);
+    }
+	
+    public static function get(){
+        if(is_null(self::$_instance)){
+            self::$_instance = new self();
+        }
+        return self::$_instance;
     }
     
     public function setClassName($className){

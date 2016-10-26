@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use \fw\core\base\AbstractController;
 use \fw\core\Template;
-use \app\app\models\News as Model;
+use \app\models\News as Model;
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +17,7 @@ class News extends AbstractController {
         $news = Model::findAll();
         $view = new Template();
         $view->template = TEMPLATE_MAIN;
-        $view->content = ROOT . '/app/views/news/all.php';
+        $view->content = ROOT . '/application/views/news/all.php';
         $view->title = 'All News';
         $view->items = $news;
         $view->display();
@@ -27,7 +27,7 @@ class News extends AbstractController {
         $item = Model::findById($id);
         $view = new Template();
         $view->template = TEMPLATE_MAIN;
-        $view->content = ROOT . '/app/views/news/one.php';
+        $view->content = ROOT . '/application/views/news/one.php';
         $view->title = 'News #' . $id;
         $view->assign('item', $item);
         $view->display();
