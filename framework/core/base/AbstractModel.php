@@ -1,8 +1,8 @@
 <?php
 
-namespace vendor\core\base;
+namespace fw\core\base;
 
-use vendor\core\DBDriver as Database;
+use fw\core\DBDriver as Database;
 
 /* 
  * To change this license header, choose License Headers in Project Properties.

@@ -1,9 +1,22 @@
 <?php
 
 require_once __DIR__ . '/../configs/constants.php';
-require_once ROOT . '/configs/DB.php';
-require_once ROOT . '/vendor/core/autoload.php';
-require_once ROOT . '/configs/paths.php';
+require_once APP_PATH . '/configs/DB.php';
+require_once FW_PATH . '/core/autoload.php';
+require_once APP_PATH . '/configs/paths.php';
 
-use vendor\core\Router;
+switch (MODE) {
+    case 'dev':
+        ini_set('error_reporting', E_ALL);
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+    break;
+    case 'prod':
+        ini_set('error_reporting', ~E_ALL);
+        ini_set('display_errors', 'off');
+        ini_set('display_startup_errors', 'off');
+    break;
+}
+
+use fw\core\Router;
 Router::dispatch();

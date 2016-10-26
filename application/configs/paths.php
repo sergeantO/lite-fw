@@ -1,6 +1,6 @@
 <?php
 
-use vendor\core\Router;
+use fw\core\Router;
 
 /* 
  * База возможных маршрутов приложения

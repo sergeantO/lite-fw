@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use vendor\core\base\AbstractModel;
+use fw\core\base\AbstractModel;
 
 /**
  * class NewsModel

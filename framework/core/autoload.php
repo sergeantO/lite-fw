@@ -1,12 +1,26 @@
 <?php
 
-spl_autoload_register(function($class){
-    $file = realpath(ROOT . '/' . str_replace('\\', '/', $class) . '.php');
+spl_autoload_register(function($class)
+{  
+    $path = explode("\\", $class);
+    $dir = array_shift($path);
+    $path = implode(DS, $path);
+    
+    switch ($dir){
+        case 'fw' :
+            $dir = FW_PATH;
+            
+            break;
+        case 'app' :
+            $dir = APP_PATH;
+            break;
+    }
+    $file = realpath($dir . DS . $path . '.php');
     if (file_exists($file)){
         require_once $file;
     }
 });
 
-if (!PRODUCTION){
-    require_once ROOT . '/vendor/core/dev.php';
+if (MODE == 'dev'){
+    require_once FW_PATH . '/core/dev.php';
 }

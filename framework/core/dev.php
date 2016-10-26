@@ -1,8 +1,5 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 //debug($var, __CLASS__, __LINE__, true);
 //debug($var, __CLASS__, __LINE__);
 function debug ($var, $class, $line, $die = 0){

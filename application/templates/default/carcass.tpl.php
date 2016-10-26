@@ -4,7 +4,7 @@
         <title><?php echo $title; ?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style><?php include(ROOT . '/vendor/core/CSS_castil.php'); ?></style>
+        <style><?php include(FW_PATH . '/core/CSS_castil.php'); ?></style>
     </head>
     
     <body>        

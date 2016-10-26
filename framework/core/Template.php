@@ -1,6 +1,6 @@
 <?php
 
-namespace vendor\core;
+namespace fw\core;
 
 /* 
  * Работа с шаблонизацией страниц
@@ -26,7 +26,7 @@ class Template
         }
         ob_start();
             $content = $this->content;
-            include ROOT . '/templates/' . $this->template . '/carcass.tpl.php';
+            include APP_PATH . '/templates/' . $this->template . '/carcass.tpl.php';
             $output = ob_get_contents();
         ob_end_clean();
         echo $output;

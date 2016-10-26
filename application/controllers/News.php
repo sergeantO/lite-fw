@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use \vendor\core\base\AbstractController;
-use \vendor\core\Template;
-use \app\models\News as Model;
+use \fw\core\base\AbstractController;
+use \fw\core\Template;
+use \app\app\models\News as Model;
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
