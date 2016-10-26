@@ -2,7 +2,7 @@
 
 namespace fw\core\base;
 
-use fw\core\DBDriver as Database;
+use fw\dbal\DBDriver as Database;
 
 /* 
  * To change this license header, choose License Headers in Project Properties.

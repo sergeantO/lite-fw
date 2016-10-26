@@ -1,6 +1,6 @@
 <?php
 
-namespace fw\core;
+namespace fw\dbal;
 
 use \PDO;
 
