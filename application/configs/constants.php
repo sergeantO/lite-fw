@@ -6,8 +6,7 @@ define('DOMAIN', 'http://lite-fw');
 define('MODE', 'dev'); //prod, dev;
 
 // Шаблоны
-define('TEMPLATE_MAIN', 'default');
-define('TEMPLATE_ADMIN', 'admin');
+define('LAYOUT', 'default');
 
 // Константы путей.
 define('ROOT', dirname(dirname(__DIR__)));

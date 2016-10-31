@@ -7,28 +7,33 @@ namespace fw\core;
  */
 class Template 
 {
-    protected $data = [];
-    public $template = 'default';
-    public $content = '';
+    public $layout;
+    public $content;
+    public $route;
     
-    public function assign($name, $value){
-        $this->data[$name] = $value;
-    }
-    
-    public function __set($k, $v) {
-         $this->data[$k] = $v;
-    }
-    
-    public function display() {
-        //$this->data['items'] --> $items
-        foreach ($this->data as $key => $val){
-            $$key = $val;
+    public function __construct($route, $layout) {
+        $this->route = $route;
+        if ($layout === false){
+            $this->layout = false;
+        } else {
+            $this->layout = $layout ?: LAYOUT;
         }
+    }
+    
+    public function display($data) {
+        //$this->data['items'] --> $items
+        foreach ($data as $key => $val){
+            $$key = $val;
+        }  
+        
+        $file_view = APP_PATH . "/views/{$this->route['module']}/{$this->route['action']}.php";
         ob_start();
-            $content = $this->content;
-            include APP_PATH . '/templates/' . $this->template . '/carcass.tpl.php';
-            $output = ob_get_contents();
-        ob_end_clean();
-        echo $output;
+            echo $file_view;
+        $content = ob_get_clean(); 
+        
+        if (false !== $this->layout){
+            $file_layout = APP_PATH . "/templates/{$this->layout}/carcass.tpl.php";
+            require $file_layout;
+        }
     }
 }

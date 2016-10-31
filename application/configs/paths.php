@@ -7,9 +7,8 @@ use fw\core\Router;
  */
 
 // user paths
-Router::add('^news/(?P<alias>[a-z 0-9 -]+)$', ['controller' => 'news', 'action' => 'get-one']);
-Router::add('^(?P<controller>[a-z-]+)/(?P<action>[a-z-]+)/(?P<alias>[a-z 0-9 -]+)$');
+Router::add('^news/(?P<alias>[a-z 0-9 -]+)$', ['module' => 'news', 'action' => 'get-one']);
 
 // default paths
-Router::add('^$', ['controller' => 'main', 'action' => 'index']);
-Router::add('^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$');
+Router::add('^$', ['module' => 'page', 'action' => 'index']);
+Router::add('^(?P<module>[a-z-]+)/?(?P<action>[a-z-]+)?$');

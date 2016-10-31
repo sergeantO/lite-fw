@@ -1,7 +1,7 @@
 <nav id="menu_side">
     <ul>
-        <li><a href="#">Меню 1</a> </li>
-        <li><a href="#">Меню 2</a> </li>
+        <li><a href='<?php echo DOMAIN ?>'>Главная</a> </li>
+        <li><a href='<?php echo DOMAIN ?>/news/'>Новости</a> </li>
         <li><a href="#">Меню 3</a> </li>
         <li><a href="#">Меню 4</a></li>
     </ul>

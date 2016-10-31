@@ -9,8 +9,8 @@ namespace fw\core;
  */
 class Router
 {
-    protected static $routes = array();
-    protected static $route = array();
+    protected static $routes = array(); //все маршруты
+    protected static $route = array();  //текущий маршрут
     
     /**
      * Добавить маршрут
@@ -38,7 +38,7 @@ class Router
                 if (!isset($route['action'])){
                     $route['action'] = 'index';
                 }
-                $route['controller'] = self::upperCamelCase($route['controller']);
+                //$route['module'] = self::upperCamelCase($route['module']);
                 self::$route = $route;
                 return TRUE;
             }
@@ -58,7 +58,7 @@ class Router
         
         // поиск совпадений с базой маршрутов.
         if (self::matchRoute($url)){
-            $controller = 'app\controllers\\' . self::$route['controller'];
+            $controller = '\app\modules\\' . self::$route['module'] . '\Controller';
             if (class_exists($controller)){
                 $cObj = new $controller(self::$route);
                 $action = self::lowerCamelCase(self::$route['action']) . 'Action';
@@ -67,6 +67,7 @@ class Router
                         $cObj->$action(self::$route['alias']);
                     } else {
                         $cObj->$action();
+                        $cObj->render();
                     } 
                 } else {
                     echo $action . ' не найден';
